@@ -1,0 +1,148 @@
+[gd_scene load_steps=19 format=3 uid="uid://dq18515xkiy66"]
+
+[ext_resource type="Script" path="res://Scripts/Bank.gd" id="1_mw47w"]
+[ext_resource type="Texture2D" uid="uid://b7yaxt8y2ag2u" path="res://assets/bank 64x80.png" id="2_8d81b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p27k"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(0, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7qxk"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(64, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqpeg"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(128, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op5g4"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(192, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75fwv"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(256, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do1h2"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(320, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gmv2"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(384, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xq06"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(448, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u20db"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dix53"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khdmb"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_601al"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx5yi"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(256, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6npnq"]
+atlas = ExtResource("2_8d81b")
+region = Rect2(320, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vs1ga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p27k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7qxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqpeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op5g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75fwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do1h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gmv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xq06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p27k")
+}],
+"loop": false,
+"name": &"coin_spawned",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u20db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dix53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khdmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_601al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx5yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6npnq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr5wy"]
+size = Vector2(128, 128)
+
+[node name="Bank" type="Area2D"]
+script = ExtResource("1_mw47w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7.10543e-15, -9.53674e-07)
+scale = Vector2(2.0625, 2.0625)
+sprite_frames = SubResource("SpriteFrames_vs1ga")
+autoplay = "default"
+frame_progress = 0.356823
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-35, 67)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 11.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_dr5wy")
+debug_color = Color(0.445587, 0.396476, 0.0660792, 0.42)
+
+[node name="wait_anim_time" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="wait_anim_time" to="." method="_on_wait_anim_time_timeout"]

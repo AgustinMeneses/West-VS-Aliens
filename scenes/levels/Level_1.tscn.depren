@@ -1,0 +1,210 @@
+[gd_scene load_steps=23 format=3 uid="uid://cgwh8h5wksf5d"]
+
+[ext_resource type="Script" path="res://Scripts/Level_1.gd" id="1_kp8aa"]
+[ext_resource type="Texture2D" uid="uid://clo1d4e0dtgbq" path="res://assets/tilesheets.png" id="3_5txps"]
+[ext_resource type="Texture2D" uid="uid://cf426aubr4tac" path="res://assets/tile selected.png" id="3_gemkb"]
+[ext_resource type="Script" path="res://UI.gd" id="4_4osca"]
+[ext_resource type="Texture2D" uid="uid://exqgvm775cfh" path="res://assets/Planta pistolera 50 x 50.png" id="4_tymbv"]
+[ext_resource type="Script" path="res://Scripts/Map.gd" id="4_uxuin"]
+[ext_resource type="Texture2D" uid="uid://dfpe6vkfnyd6w" path="res://assets/tile selected_2.png" id="4_wj7bf"]
+[ext_resource type="Texture2D" uid="uid://dw3d51s1wphqi" path="res://assets/Moneda.png" id="5_51kh4"]
+[ext_resource type="PackedScene" uid="uid://bfjq0e1bm1lmm" path="res://scenes/mecanics/des_plants.tscn" id="6_8ybmq"]
+[ext_resource type="PackedScene" uid="uid://c3muf6pyauhjy" path="res://scenes/objects/enemy.tscn" id="6_ken8i"]
+[ext_resource type="Script" path="res://Scripts/dropping_coins.gd" id="11_6vn1n"]
+[ext_resource type="PackedScene" uid="uid://c41pt1knfdkup" path="res://scenes/mecanics/Golden_coin.tscn" id="12_ekoce"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rix35"]
+texture = ExtResource("3_5txps")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lsnko"]
+texture = ExtResource("3_gemkb")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ls65d"]
+texture = ExtResource("4_wj7bf")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yab0k"]
+tile_size = Vector2i(60, 60)
+sources/0 = SubResource("TileSetAtlasSource_rix35")
+sources/3 = SubResource("TileSetAtlasSource_lsnko")
+sources/4 = SubResource("TileSetAtlasSource_ls65d")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lv4mm"]
+font_size = 54
+font_color = Color(0.892831, 0.839516, 0.770466, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx6pq"]
+bg_color = Color(0.870588, 0.639216, 0.415686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53xks"]
+bg_color = Color(0.943891, 0.809435, 0.661974, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_34fb6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdm74"]
+line_spacing = 1.0
+font = SubResource("SystemFont_34fb6")
+font_size = 60
+font_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_vk0mb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -176, -120, 0, 0, 0, 0, 616, -120)
+}
+point_count = 2
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_kp8aa")
+marker_vel = 100.0
+
+[node name="Map" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_yab0k")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65535, 196608, 1610612736, 65537, 0, 0, 196609, 0, 0, 2, 0, 0, 131074, 0, 0, -65533, 196608, 1610612736, 65539, 0, 0, 196611, 0, 0, 4, 0, 0, 131076, 0, 0, -65531, 196608, 1610612736, 65541, 0, 0, 196613, 0, 0, 6, 0, 0, 131078, 0, 0, -65529, 196608, 1610612736, 65543, 0, 0, 196615, 0, 0, 196610, 65536, 0, 131073, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 3, 65536, 0, 1, 65536, 0, -65534, 131072, 1610612736, -65532, 131072, 1610612736, 65540, 65536, 0, 5, 65536, 0, -65530, 131072, 1610612736, 7, 65536, 0, 65542, 65536, 0, 131077, 65536, 0, 196612, 65536, 0, 196614, 65536, 0, 131079, 65536, 0, 262146, 0, 0, 262148, 0, 0, 262150, 0, 0, 262145, 65536, 0, 262147, 65536, 0, 262149, 65536, 0, 262151, 65536, 0, 196616, 65536, 0, 65544, 65536, 0, -65528, 131072, 1610612736, 196617, 196608, 0, 131081, 131072, 0, 65545, 196608, 0, 9, 131072, 0, -65527, 262144, 0, 262153, 131072, 0, 262152, 0, 0, 131080, 0, 0, 8, 0, 0, 327689, 262144, 0, 327688, 131072, 1342177280, 327686, 131072, 1342177280, 327684, 131072, 1342177280, 327682, 131072, 1342177280, 327681, 196608, 1342177280, 327683, 196608, 1342177280, 327685, 196608, 1342177280, 327687, 196608, 1342177280, 0, 0, 0, 131072, 0, 0, 262144, 0, 0, 393215, 131072, 1342177280, 262143, 0, 0, 131071, 0, 0, -1, 131072, 1610612736, 65534, 196608, 805306368, 196606, 196608, 805306368, 327678, 196608, 805306368, 393213, 262144, 0, 262141, 262144, 0, 196605, 262144, 0, 65533, 262144, 0, -3, 262144, 0, 131069, 262144, 0, 327677, 262144, 0, -2, 262144, 0, -65536, 131072, 1610612736, 65535, 65536, 0, 131070, 131072, 805306368, 65536, 65536, 0, 196607, 65536, 0, 262142, 131072, 805306368, 196608, 65536, 0, 327679, 65536, 0, 393214, 262144, 0, 327680, 131072, 1342177280, -65526, 262144, 0, 10, 262144, 0, 262154, 262144, 0, 327690, 262144, 0, 65546, 262144, 0, 131082, 262144, 0, 196618, 262144, 0, -65525, 262144, 0, 11, 262144, 0, 65547, 262144, 0, 131083, 262144, 0, 196619, 262144, 0, 262155, 262144, 0, 327691, 262144, 0, 327692, 262144, 0, 262156, 262144, 0, 196620, 262144, 0, 131084, 262144, 0, 65548, 262144, 0, 12, 262144, 0, -65524, 262144, 0, -65523, 262144, 0, 13, 262144, 0, 65549, 262144, 0, 131085, 262144, 0, 196621, 262144, 0, 262157, 262144, 0, 327693, 262144, 0, -65522, 262144, 0, 14, 262144, 0, 65550, 262144, 0, 131086, 262144, 0, 196622, 262144, 0, 262158, 262144, 0, 327694, 262144, 0)
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("4_uxuin")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_left = -0.16
+anchor_top = -0.086
+anchor_right = 0.556
+anchor_bottom = 0.556
+offset_left = -184.0
+offset_top = -56.0
+offset_right = -184.0
+offset_bottom = -56.0
+script = ExtResource("4_4osca")
+
+[node name="Planta Rodadora" type="Panel" parent="UI"]
+clip_contents = true
+layout_mode = 1
+offset_left = 145.0
+offset_top = 5.0
+offset_right = 247.0
+offset_bottom = 79.0
+scale = Vector2(0.755346, 0.704552)
+
+[node name="PickupButton" type="Button" parent="UI/Planta Rodadora"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="planta rodadora Label" type="Label" parent="UI/Planta Rodadora"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.36
+anchor_bottom = 0.341
+offset_right = 55.924
+offset_bottom = 50.551
+scale = Vector2(0.394676, 0.332557)
+text = "$75"
+label_settings = SubResource("LabelSettings_lv4mm")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Planta Rodadora"]
+position = Vector2(61, 48)
+scale = Vector2(1.78571, 1.78571)
+texture = ExtResource("4_tymbv")
+region_enabled = true
+region_rect = Rect2(0, 0, 49.0189, 51.07)
+
+[node name="des_plants" parent="UI" instance=ExtResource("6_8ybmq")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 24.0
+offset_top = 328.0
+offset_right = 142.0
+offset_bottom = 456.0
+scale = Vector2(0.56065, 0.56065)
+
+[node name="Money" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 4.0
+offset_right = 114.0
+offset_bottom = 57.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bx6pq")
+
+[node name="Panel" type="Panel" parent="UI/Money"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 41.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_53xks")
+
+[node name="money_Label" type="Label" parent="UI/Money"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.393
+anchor_top = 0.194
+anchor_right = 0.393
+anchor_bottom = 0.194
+offset_left = 15.451
+offset_top = 8.166
+offset_right = 177.48
+offset_bottom = 91.166
+scale = Vector2(0.228374, 0.21412)
+text = "0 $"
+label_settings = SubResource("LabelSettings_tdm74")
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Money"]
+position = Vector2(22, 27)
+scale = Vector2(0.680947, 0.680947)
+texture = ExtResource("5_51kh4")
+region_enabled = true
+region_rect = Rect2(0, 0, 65, 67)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="enemy" parent="Enemies" instance=ExtResource("6_ken8i")]
+position = Vector2(580, 25)
+
+[node name="enemy2" parent="Enemies" instance=ExtResource("6_ken8i")]
+position = Vector2(581, 89)
+
+[node name="enemy3" parent="Enemies" instance=ExtResource("6_ken8i")]
+position = Vector2(587, 147)
+
+[node name="enemy4" parent="Enemies" instance=ExtResource("6_ken8i")]
+position = Vector2(659, 147)
+
+[node name="Is Button Hold Down" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(231, 150)
+zoom = Vector2(1.4, 1.55)
+
+[node name="Dropping coin" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vk0mb")
+
+[node name="dropping_coins" type="PathFollow2D" parent="Dropping coin"]
+position = Vector2(-176, -120)
+script = ExtResource("11_6vn1n")
+
+[node name="Marker2D" type="Marker2D" parent="Dropping coin/dropping_coins"]
+
+[node name="timing coins" type="Timer" parent="Dropping coin/dropping_coins"]
+
+[node name="Golden Coin" parent="Dropping coin/dropping_coins" instance=ExtResource("12_ekoce")]
+position = Vector2(176, 120)
+
+[connection signal="button_down" from="UI/Planta Rodadora/PickupButton" to="." method="_on_pickup_button_button_down"]
+[connection signal="pressed" from="UI/Planta Rodadora/PickupButton" to="." method="_on_pickup_button_pressed"]
+[connection signal="timeout" from="Is Button Hold Down" to="." method="_on_marker_timer_timeout"]
+[connection signal="timeout" from="Is Button Hold Down" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Is Button Hold Down" to="." method="_on_is_button_hold_down_timeout"]

@@ -1,0 +1,148 @@
+[gd_scene load_steps=19 format=3 uid="uid://dfwwuoayeurdi"]
+
+[ext_resource type="Texture2D" uid="uid://0jrcs2fkei1l" path="res://assets/Nepal 64x64.png" id="1_sht2s"]
+[ext_resource type="Script" path="res://Scripts/nepal.gd" id="1_v5exx"]
+[ext_resource type="Texture2D" uid="uid://dicd0bewu0cyp" path="res://assets/Charhing bar.png" id="2_m1y6n"]
+[ext_resource type="PackedScene" uid="uid://rekox6wbq7fg" path="res://scenes/mecanics/atack_area.tscn" id="2_r5fmn"]
+[ext_resource type="AudioStream" uid="uid://cciceelcmj17f" path="res://assets/Sounds .wav/AlienHurt.wav" id="4_xiuv2"]
+
+[sub_resource type="Curve" id="Curve_a6lxy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.854749, 0), 0.307349, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6l31v"]
+curve = SubResource("Curve_a6lxy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vvj0r"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.175
+spread = 163.834
+initial_velocity_min = 116.9
+initial_velocity_max = 165.45
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_6l31v")
+color = Color(0.997587, 0.968756, 0.888482, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvnai"]
+atlas = ExtResource("1_sht2s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us5a4"]
+atlas = ExtResource("1_sht2s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fos8e"]
+atlas = ExtResource("1_sht2s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a0ot"]
+atlas = ExtResource("1_sht2s")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjttf"]
+atlas = ExtResource("1_sht2s")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e4j8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvnai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us5a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fos8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a0ot")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_cjttf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nparp"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7l7b"]
+size = Vector2(33.0119, 27.5099)
+
+[sub_resource type="Animation" id="Animation_crflx"]
+resource_name = "start"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqh18"]
+_data = {
+"start": SubResource("Animation_crflx")
+}
+
+[node name="Nepal" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_v5exx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 24)
+scale = Vector2(1, 1)
+emitting = false
+amount = 11
+process_material = SubResource("ParticleProcessMaterial_vvj0r")
+texture = ExtResource("2_m1y6n")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e4j8s")
+autoplay = "default"
+frame_progress = 0.866691
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_nparp")
+
+[node name="Atack_area" parent="." instance=ExtResource("2_r5fmn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Atack_area"]
+position = Vector2(24, 4)
+scale = Vector2(1.45402, 1.45402)
+shape = SubResource("RectangleShape2D_n7l7b")
+debug_color = Color(0.886879, 0.282367, 0.445661, 0.42)
+
+[node name="shooter_timer" type="Timer" parent="."]
+
+[node name="anim_damge" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xiuv2")
+pitch_scale = 0.62
+bus = &"damage"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xqh18")
+}
+
+[connection signal="timeout" from="shooter_timer" to="." method="_on_shooter_timer_timeout"]
+[connection signal="timeout" from="anim_damge" to="." method="_on_anim_damge_timeout"]

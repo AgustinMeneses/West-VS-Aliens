@@ -1,0 +1,193 @@
+[gd_scene load_steps=18 format=3 uid="uid://cgwh8h5wksf5d"]
+
+[ext_resource type="Script" path="res://Scripts/Level_1.gd" id="1_kp8aa"]
+[ext_resource type="Script" path="res://Scripts/TilesPlants.gd" id="2_rng3f"]
+[ext_resource type="Texture2D" uid="uid://clo1d4e0dtgbq" path="res://assets/tilesheets.png" id="3_5txps"]
+[ext_resource type="Texture2D" uid="uid://cf426aubr4tac" path="res://assets/tile selected.png" id="3_gemkb"]
+[ext_resource type="Texture2D" uid="uid://exqgvm775cfh" path="res://assets/Planta pistolera 50 x 50.png" id="4_tymbv"]
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="4_wpr2u"]
+[ext_resource type="Texture2D" uid="uid://dw3d51s1wphqi" path="res://assets/Moneda.png" id="5_51kh4"]
+[ext_resource type="PackedScene" uid="uid://bfjq0e1bm1lmm" path="res://scenes/mecanics/des_plants.tscn" id="6_8ybmq"]
+[ext_resource type="PackedScene" uid="uid://c3muf6pyauhjy" path="res://scenes/objects/enemy.tscn" id="6_ken8i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rix35"]
+texture = ExtResource("3_5txps")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwaw2"]
+texture = ExtResource("3_gemkb")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yab0k"]
+tile_size = Vector2i(60, 60)
+sources/0 = SubResource("TileSetAtlasSource_rix35")
+sources/1 = SubResource("TileSetAtlasSource_dwaw2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lv4mm"]
+font_size = 54
+font_color = Color(0.892831, 0.839516, 0.770466, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5guxj"]
+bg_color = Color(0.870588, 0.639216, 0.415686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_881de"]
+bg_color = Color(0.981816, 0.904283, 0.808344, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_34fb6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdm74"]
+line_spacing = 1.0
+font = SubResource("SystemFont_34fb6")
+font_size = 60
+font_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
+[node name="GameScene" type="Node2D"]
+position = Vector2(228, 151)
+script = ExtResource("1_kp8aa")
+marker_vel = 100.0
+
+[node name="TilesPlants" type="Node2D" parent="."]
+script = ExtResource("2_rng3f")
+
+[node name="TileMap" type="TileMap" parent="TilesPlants"]
+tile_set = SubResource("TileSet_yab0k")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65535, 196608, 1610612736, 65537, 0, 0, 196609, 0, 0, 2, 0, 0, 131074, 0, 0, -65533, 196608, 1610612736, 65539, 0, 0, 196611, 0, 0, 4, 0, 0, 131076, 0, 0, -65531, 196608, 1610612736, 65541, 0, 0, 196613, 0, 0, 6, 0, 0, 131078, 0, 0, -65529, 196608, 1610612736, 65543, 0, 0, 196615, 0, 0, 196610, 65536, 0, 131073, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 3, 65536, 0, 1, 65536, 0, -65534, 131072, 1610612736, -65532, 131072, 1610612736, 65540, 65536, 0, 5, 65536, 0, -65530, 131072, 1610612736, 7, 65536, 0, 65542, 65536, 0, 131077, 65536, 0, 196612, 65536, 0, 196614, 65536, 0, 131079, 65536, 0, 262146, 0, 0, 262148, 0, 0, 262150, 0, 0, 262145, 65536, 0, 262147, 65536, 0, 262149, 65536, 0, 262151, 65536, 0, 196616, 65536, 0, 65544, 65536, 0, -65528, 131072, 1610612736, 196617, 196608, 0, 131081, 131072, 0, 65545, 196608, 0, 9, 131072, 0, -65527, 262144, 0, 262153, 131072, 0, 262152, 0, 0, 131080, 0, 0, 8, 0, 0, 327689, 262144, 0, 327688, 131072, 1342177280, 327686, 131072, 1342177280, 327684, 131072, 1342177280, 327682, 131072, 1342177280, 327681, 196608, 1342177280, 327683, 196608, 1342177280, 327685, 196608, 1342177280, 327687, 196608, 1342177280, 0, 0, 0, 131072, 0, 0, 262144, 0, 0, 393215, 0, 0, 262143, 65536, 0, 131071, 65536, 0, -1, 0, 0, 65534, 131072, 805306368, 196606, 131072, 805306368, 327678, 131072, 805306368, 393213, 262144, 0, 262141, 262144, 0, 196605, 262144, 0, 65533, 262144, 0, -3, 262144, 0, 131069, 262144, 0, 327677, 262144, 0, -2, 131072, 805306368, -65536, 131072, 1610612736, 65535, 0, 0, 131070, 196608, 805306368, 65536, 65536, 0, 196607, 0, 0, 262142, 196608, 805306368, 196608, 65536, 0, 327679, 0, 0, 393214, 131072, 805306368, 327680, 131072, 1342177280, -65526, 262144, 0, 10, 262144, 0, 262154, 262144, 0, 327690, 262144, 0, 65546, 262144, 0, 131082, 262144, 0, 196618, 262144, 0, -65525, 262144, 0, 11, 262144, 0, 65547, 262144, 0, 131083, 262144, 0, 196619, 262144, 0, 262155, 262144, 0, 327691, 262144, 0, 327692, 262144, 0, 262156, 262144, 0, 196620, 262144, 0, 131084, 262144, 0, 65548, 262144, 0, 12, 262144, 0, -65524, 262144, 0, -65523, 262144, 0, 13, 262144, 0, 65549, 262144, 0, 131085, 262144, 0, 196621, 262144, 0, 262157, 262144, 0, 327693, 262144, 0, -65522, 262144, 0, 14, 262144, 0, 65550, 262144, 0, 131086, 262144, 0, 196622, 262144, 0, 262158, 262144, 0, 327694, 262144, 0)
+layer_1/tile_data = PackedInt32Array()
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_wpr2u")
+
+[node name="botones" type="Control" parent="UI"]
+layout_mode = 3
+anchor_left = 0.042
+anchor_top = 0.144
+anchor_right = 0.753
+anchor_bottom = 0.789
+offset_left = -0.384003
+offset_top = -0.312004
+offset_right = 0.543945
+offset_bottom = -0.272034
+
+[node name="Planta Rodadora" type="Panel" parent="UI/botones"]
+clip_contents = true
+layout_mode = 1
+offset_left = 145.0
+offset_top = 5.0
+offset_right = 247.0
+offset_bottom = 79.0
+scale = Vector2(0.755346, 0.704552)
+
+[node name="Button" type="Button" parent="UI/botones/Planta Rodadora"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="planta rodadora Label" type="Label" parent="UI/botones/Planta Rodadora"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.36
+anchor_bottom = 0.341
+offset_right = 55.924
+offset_bottom = 50.551
+scale = Vector2(0.394676, 0.332557)
+text = "$75"
+label_settings = SubResource("LabelSettings_lv4mm")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/botones/Planta Rodadora"]
+position = Vector2(61, 48)
+scale = Vector2(1.78571, 1.78571)
+texture = ExtResource("4_tymbv")
+region_enabled = true
+region_rect = Rect2(0, 0, 49.0189, 51.07)
+
+[node name="Panel" type="Panel" parent="UI/botones"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.022
+anchor_right = 0.159
+anchor_bottom = 0.124
+offset_left = 0.32
+offset_top = 0.112
+offset_right = -32.86
+offset_bottom = -11.524
+scale = Vector2(1.37245, 1.37245)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5guxj")
+
+[node name="Panel" type="Panel" parent="UI/botones/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.348
+anchor_top = 0.161
+anchor_right = 0.966
+anchor_bottom = 0.839
+offset_left = 0.027998
+offset_top = 0.00899982
+offset_right = 0.026001
+offset_bottom = -0.00900078
+theme_override_styles/panel = SubResource("StyleBoxFlat_881de")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/botones/Panel"]
+position = Vector2(16, 14)
+scale = Vector2(0.496154, 0.496154)
+texture = ExtResource("5_51kh4")
+region_enabled = true
+region_rect = Rect2(0, 0, 65, 67)
+
+[node name="money_Label" type="Label" parent="UI/botones/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.393
+anchor_top = 0.194
+anchor_right = 0.932
+anchor_bottom = 0.767
+offset_left = 0.0229988
+offset_top = -0.0139999
+offset_right = 162.052
+offset_bottom = 65.223
+scale = Vector2(0.228374, 0.21412)
+text = "0 $"
+label_settings = SubResource("LabelSettings_tdm74")
+horizontal_alignment = 2
+
+[node name="des_plants" parent="UI/botones" instance=ExtResource("6_8ybmq")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.016
+anchor_top = 0.807
+anchor_right = 0.097
+anchor_bottom = 0.967
+offset_left = -0.287998
+offset_top = -0.0280457
+offset_right = 52.292
+offset_bottom = 52.0919
+scale = Vector2(0.56065, 0.56065)
+
+[node name="enemy" parent="." instance=ExtResource("6_ken8i")]
+position = Vector2(580, 25)
+
+[node name="enemy2" parent="." instance=ExtResource("6_ken8i")]
+position = Vector2(519, 89)
+
+[node name="enemy3" parent="." instance=ExtResource("6_ken8i")]
+position = Vector2(456, 147)
+
+[node name="MarkerTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(231, 150)
+zoom = Vector2(1.4, 1.55)
+
+[connection signal="pressed" from="UI/botones/Planta Rodadora/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="MarkerTimer" to="." method="_on_marker_timer_timeout"]
+[connection signal="timeout" from="MarkerTimer" to="." method="_on_timer_timeout"]

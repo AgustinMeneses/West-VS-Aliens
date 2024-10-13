@@ -1,0 +1,365 @@
+[gd_scene load_steps=23 format=3 uid="uid://cgn08r6xegyf8"]
+
+[ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_p2c0v"]
+[ext_resource type="PackedScene" uid="uid://cgwh8h5wksf5d" path="res://scenes/levels/Level_1.tscn" id="2_nurxg"]
+[ext_resource type="Texture2D" uid="uid://11kgldugrwka" path="res://assets/Main_screen.png" id="3_vrrhj"]
+[ext_resource type="Texture2D" uid="uid://c7lsugfe71w4s" path="res://assets/pngs/Plant.png" id="4_odcuh"]
+[ext_resource type="FontFile" uid="uid://dkow25jy8qwon" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Blocks.ttf" id="5_due8p"]
+[ext_resource type="FontFile" uid="uid://pt66jomtrmfi" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Mini.ttf" id="5_kodu2"]
+[ext_resource type="AudioStream" uid="uid://ckmx0t8wnr0ux" path="res://assets/Sounds .wav/yt5s.com - A Fistful of Dollars - Titles (128 kbps).mp3" id="7_qc2pt"]
+[ext_resource type="AudioStream" uid="uid://bfr03qo16s6af" path="res://assets/Sounds .wav/No_bullets.mp3" id="8_tgwnk"]
+[ext_resource type="AudioStream" uid="uid://df7t4pxp4hmbt" path="res://assets/Sounds .wav/Shooting Noise.mp3" id="8_vjgyo"]
+[ext_resource type="Texture2D" uid="uid://n52ydw4dnxto" path="res://assets/pngs/Transcision.png" id="12_kh4qu"]
+[ext_resource type="PackedScene" uid="uid://dinblgl2d1ftl" path="res://scenes/mecanics/sound_button.tscn" id="12_lae7h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpyx3"]
+bg_color = Color(0.674875, 0.590332, 0.410271, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sigw0"]
+font = ExtResource("5_kodu2")
+font_size = 44
+
+[sub_resource type="LabelSettings" id="LabelSettings_m7d4t"]
+font = ExtResource("5_kodu2")
+font_size = 75
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0g3y"]
+font = ExtResource("5_due8p")
+font_size = 120
+font_color = Color(0.972841, 0.887265, 0.31633, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8yf62"]
+texture = ExtResource("12_kh4qu")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yug5i"]
+tile_size = Vector2i(70, 70)
+sources/0 = SubResource("TileSetAtlasSource_8yf62")
+
+[sub_resource type="Curve2D" id="Curve2D_wj0ob"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 811.981, 448.323, 0, 0, 0, 0, 2839.54, 448.323)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_scy0o"]
+resource_name = "Fade_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -10.0]
+}
+
+[sub_resource type="Animation" id="Animation_7ug0e"]
+resource_name = "Main_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Buttons/Start_Game:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q2m2n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Buttons/Start_Game:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dsmj3"]
+_data = {
+"Fade_out": SubResource("Animation_scy0o"),
+"Main_anim": SubResource("Animation_7ug0e"),
+"RESET": SubResource("Animation_q2m2n")
+}
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchor_left = 1.167
+anchor_top = 1.167
+anchor_right = 1.167
+anchor_bottom = 1.167
+offset_left = -1344.38
+offset_top = -756.216
+offset_right = 1433.62
+offset_bottom = 827.784
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.413798, 0.410418)
+script = ExtResource("1_p2c0v")
+GameScene = ExtResource("2_nurxg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.579
+anchor_bottom = 0.579
+offset_right = -463.462
+offset_bottom = -265.136
+scale = Vector2(1.40561, 1.40561)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jpyx3")
+
+[node name="Background" type="Sprite2D" parent="Panel"]
+position = Vector2(550.163, -124.265)
+scale = Vector2(1.86032, 1.51782)
+texture = ExtResource("3_vrrhj")
+
+[node name="Plant" type="Sprite2D" parent="Panel"]
+modulate = Color(0.97537, 0.863822, 0.825877, 1)
+position = Vector2(715.214, 402.158)
+scale = Vector2(7.95713, 7.95713)
+texture = ExtResource("4_odcuh")
+
+[node name="Buttons" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -206.321
+offset_top = 110.94
+offset_right = -209.321
+offset_bottom = 110.94
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.825969, 0.825969)
+
+[node name="Start_Game" type="Button" parent="Panel/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.259
+anchor_top = 0.37
+anchor_right = 0.701
+anchor_bottom = 0.594
+offset_left = 1.92917
+offset_top = -144.867
+offset_right = 2.83911
+offset_bottom = -120.915
+
+[node name="Label" type="Label" parent="Panel/Buttons/Start_Game"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004
+anchor_top = 0.052
+anchor_right = 0.971
+anchor_bottom = 0.915
+offset_left = 2.09268
+offset_top = -4.47658
+offset_right = -230.894
+offset_bottom = -85.1866
+scale = Vector2(1.97271, 2.13549)
+text = "Start Game"
+label_settings = SubResource("LabelSettings_sigw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Button" parent="Panel/Buttons"]
+layout_mode = 0
+offset_left = 1282.22
+offset_top = 551.951
+offset_right = 1792.22
+offset_bottom = 711.951
+scale = Vector2(0.505832, 0.505832)
+
+[node name="Label" type="Label" parent="Panel/Buttons/Credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004
+anchor_top = 0.052
+anchor_right = 0.971
+anchor_bottom = 0.915
+offset_left = -2.0227
+offset_top = 0.160001
+offset_right = -235.009
+offset_bottom = -80.55
+scale = Vector2(1.97271, 2.13549)
+text = "Credits
+"
+label_settings = SubResource("LabelSettings_sigw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exit" type="Button" parent="Panel/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.259
+anchor_top = 0.37
+anchor_right = 0.701
+anchor_bottom = 0.594
+offset_left = 0.221985
+offset_top = 219.76
+offset_right = 1.13196
+offset_bottom = 218.8
+
+[node name="Label" type="Label" parent="Panel/Buttons/exit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_right = 0.969
+anchor_bottom = 0.862
+offset_left = -1.86047
+offset_top = -0.337448
+offset_right = -251.92
+offset_bottom = -64.5957
+scale = Vector2(2.05691, 2.05691)
+text = "Exit"
+label_settings = SubResource("LabelSettings_sigw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select_level" type="Button" parent="Panel/Buttons"]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 274.926
+offset_right = 803.0
+offset_bottom = 444.926
+
+[node name="Label" type="Label" parent="Panel/Buttons/Select_level"]
+layout_mode = 0
+offset_right = 505.0
+offset_bottom = 170.0
+text = "Select Level
+"
+label_settings = SubResource("LabelSettings_m7d4t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unavailable" type="Panel" parent="Panel/Buttons"]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 275.0
+offset_right = 804.0
+offset_bottom = 445.0
+
+[node name="Name_Game" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1350.34
+offset_top = 19.4922
+offset_right = -180.343
+offset_bottom = 199.492
+grow_horizontal = 2
+scale = Vector2(1.29047, 1.29047)
+text = "WEST VS ALIENS"
+label_settings = SubResource("LabelSettings_x0g3y")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(1, 1)
+tile_set = SubResource("TileSet_yug5i")
+format = 2
+layer_0/tile_data = PackedInt32Array(25, 0, 0, 65561, 0, 0, 131097, 0, 0, 196633, 0, 0, 262169, 0, 0, 327705, 0, 0, 393241, 0, 0, 458777, 0, 0, 524313, 0, 0, 589849, 0, 0, 655385, 0, 0, 720921, 0, 0, 786457, 0, 0, 26, 65536, 0, 65562, 65536, 0, 131098, 65536, 0, 196634, 65536, 0, 262170, 65536, 0, 327706, 65536, 0, 393242, 65536, 0, 458778, 65536, 0, 524314, 65536, 0, 589850, 65536, 0, 655386, 65536, 0, 720922, 65536, 0, 786458, 65536, 0, 786459, 65536, 0, 786460, 65536, 0, 786461, 65536, 0, 786462, 65536, 0, 786463, 65536, 0, 786464, 65536, 0, 720928, 65536, 0, 655392, 65536, 0, 589856, 65536, 0, 524320, 65536, 0, 458784, 65536, 0, 393248, 65536, 0, 327712, 65536, 0, 262176, 65536, 0, 196640, 65536, 0, 131104, 65536, 0, 65568, 65536, 0, 32, 65536, 0, 27, 65536, 0, 28, 65536, 0, 29, 65536, 0, 30, 65536, 0, 31, 65536, 0, 458783, 65536, 0, 393247, 65536, 0, 327711, 65536, 0, 262175, 65536, 0, 196639, 65536, 0, 131103, 65536, 0, 65567, 65536, 0, 65566, 65536, 0, 65565, 65536, 0, 65564, 65536, 0, 65563, 65536, 0, 131099, 65536, 0, 196635, 65536, 0, 262171, 65536, 0, 327707, 65536, 0, 393243, 65536, 0, 458779, 65536, 0, 524315, 65536, 0, 589851, 65536, 0, 655387, 65536, 0, 720923, 65536, 0, 720924, 65536, 0, 655388, 65536, 0, 589852, 65536, 0, 524316, 65536, 0, 458780, 65536, 0, 393244, 65536, 0, 327708, 65536, 0, 262172, 65536, 0, 196636, 65536, 0, 131100, 65536, 0, 131101, 65536, 0, 196637, 65536, 0, 262173, 65536, 0, 327709, 65536, 0, 393245, 65536, 0, 458781, 65536, 0, 524317, 65536, 0, 589853, 65536, 0, 655389, 65536, 0, 720925, 65536, 0, 720926, 65536, 0, 655390, 65536, 0, 589854, 65536, 0, 524318, 65536, 0, 458782, 65536, 0, 393246, 65536, 0, 327710, 65536, 0, 262174, 65536, 0, 196638, 65536, 0, 131102, 65536, 0, 524319, 65536, 0, 589855, 65536, 0, 655391, 65536, 0, 720927, 65536, 0, 33, 65536, 0, 65569, 65536, 0, 131105, 65536, 0, 196641, 65536, 0, 262177, 65536, 0, 327713, 65536, 0, 393249, 65536, 0, 458785, 65536, 0, 524321, 65536, 0, 589857, 65536, 0, 655393, 65536, 0, 720929, 65536, 0, 786465, 65536, 0, 34, 65536, 0, 35, 65536, 0, 36, 65536, 0, 37, 65536, 0, 38, 65536, 0, 39, 65536, 0, 40, 65536, 0, 41, 65536, 0, 65577, 65536, 0, 131113, 65536, 0, 196649, 65536, 0, 262185, 65536, 0, 327721, 65536, 0, 393257, 65536, 0, 458793, 65536, 0, 524329, 65536, 0, 589865, 65536, 0, 655401, 65536, 0, 720937, 65536, 0, 786473, 65536, 0, 786472, 65536, 0, 786471, 65536, 0, 786470, 65536, 0, 786469, 65536, 0, 786468, 65536, 0, 786467, 65536, 0, 786466, 65536, 0, 393255, 65536, 0, 327719, 65536, 0, 262183, 65536, 0, 196647, 65536, 0, 131111, 65536, 0, 65575, 65536, 0, 65574, 65536, 0, 65573, 65536, 0, 65572, 65536, 0, 65571, 65536, 0, 65570, 65536, 0, 131106, 65536, 0, 196642, 65536, 0, 262178, 65536, 0, 327714, 65536, 0, 393250, 65536, 0, 458786, 65536, 0, 524322, 65536, 0, 589858, 65536, 0, 655394, 65536, 0, 720930, 65536, 0, 720931, 65536, 0, 655395, 65536, 0, 589859, 65536, 0, 524323, 65536, 0, 458787, 65536, 0, 393251, 65536, 0, 327715, 65536, 0, 262179, 65536, 0, 196643, 65536, 0, 131107, 65536, 0, 131108, 65536, 0, 196644, 65536, 0, 262180, 65536, 0, 327716, 65536, 0, 393252, 65536, 0, 458788, 65536, 0, 524324, 65536, 0, 589860, 65536, 0, 655396, 65536, 0, 720932, 65536, 0, 720933, 65536, 0, 655397, 65536, 0, 589861, 65536, 0, 524325, 65536, 0, 458789, 65536, 0, 393253, 65536, 0, 327717, 65536, 0, 262181, 65536, 0, 196645, 65536, 0, 131109, 65536, 0, 131110, 65536, 0, 196646, 65536, 0, 262182, 65536, 0, 327718, 65536, 0, 393254, 65536, 0, 458790, 65536, 0, 524326, 65536, 0, 589862, 65536, 0, 655398, 65536, 0, 720934, 65536, 0, 720935, 65536, 0, 655399, 65536, 0, 589863, 65536, 0, 524327, 65536, 0, 458791, 65536, 0, 458792, 65536, 0, 393256, 65536, 0, 327720, 65536, 0, 262184, 65536, 0, 196648, 65536, 0, 131112, 65536, 0, 65576, 65536, 0, 524328, 65536, 0, 589864, 65536, 0, 655400, 65536, 0, 720936, 65536, 0, 42, 65536, 0, 65578, 65536, 0, 131114, 65536, 0, 196650, 65536, 0, 262186, 65536, 0, 327722, 65536, 0, 393258, 65536, 0, 458794, 65536, 0, 524330, 65536, 0, 589866, 65536, 0, 655402, 65536, 0, 720938, 65536, 0, 786474, 65536, 0, -65511, 0, 0, 851993, 0, 0, 851994, 65536, 0, 851995, 65536, 0, 851996, 65536, 0, 851997, 65536, 0, 851998, 65536, 0, 851999, 65536, 0, 852000, 65536, 0, 852001, 65536, 0, 852002, 65536, 0, 852003, 65536, 0, 852004, 65536, 0, 852005, 65536, 0, 852006, 65536, 0, 852007, 65536, 0, 852008, 65536, 0, 852009, 65536, 0, -65510, 65536, 0, -65509, 65536, 0, -65508, 65536, 0, -65507, 65536, 0, -65506, 65536, 0, -65505, 65536, 0, -65504, 65536, 0, -65503, 65536, 0, -65502, 65536, 0, -65501, 65536, 0, -65500, 65536, 0, -65499, 65536, 0, -65498, 65536, 0, -65497, 65536, 0, -65496, 65536, 0, -65495, 65536, 0, 852010, 65536, 0, -65494, 65536, 0, 852011, 65536, 0, 852012, 65536, 0, 852013, 65536, 0, 852014, 65536, 0, 852015, 65536, 0, 852016, 65536, 0, 852017, 65536, 0, 852018, 65536, 0, 852019, 65536, 0, 852020, 65536, 0, 786484, 65536, 0, 720948, 65536, 0, 655412, 65536, 0, 589876, 65536, 0, 524340, 65536, 0, 458804, 65536, 0, 393268, 65536, 0, 327732, 65536, 0, 262196, 65536, 0, 196660, 65536, 0, 131124, 65536, 0, 65588, 65536, 0, 52, 65536, 0, -65484, 65536, 0, -65485, 65536, 0, -65486, 65536, 0, -65487, 65536, 0, -65488, 65536, 0, -65489, 65536, 0, -65490, 65536, 0, -65491, 65536, 0, -65492, 65536, 0, -65493, 65536, 0, 589867, 65536, 0, 524331, 65536, 0, 458795, 65536, 0, 393259, 65536, 0, 327723, 65536, 0, 262187, 65536, 0, 196651, 65536, 0, 131115, 65536, 0, 65579, 65536, 0, 43, 65536, 0, 44, 65536, 0, 65580, 65536, 0, 131116, 65536, 0, 196652, 65536, 0, 262188, 65536, 0, 327724, 65536, 0, 393260, 65536, 0, 458796, 65536, 0, 524332, 65536, 0, 589868, 65536, 0, 655404, 65536, 0, 655403, 65536, 0, 720939, 65536, 0, 786475, 65536, 0, 786476, 65536, 0, 720940, 65536, 0, 720941, 65536, 0, 655405, 65536, 0, 589869, 65536, 0, 524333, 65536, 0, 458797, 65536, 0, 393261, 65536, 0, 327725, 65536, 0, 262189, 65536, 0, 196653, 65536, 0, 131117, 65536, 0, 65581, 65536, 0, 45, 65536, 0, 46, 65536, 0, 65582, 65536, 0, 131118, 65536, 0, 196654, 65536, 0, 262190, 65536, 0, 327726, 65536, 0, 393262, 65536, 0, 458798, 65536, 0, 524334, 65536, 0, 589870, 65536, 0, 655406, 65536, 0, 720942, 65536, 0, 786478, 65536, 0, 786477, 65536, 0, 786479, 65536, 0, 720943, 65536, 0, 655407, 65536, 0, 589871, 65536, 0, 524335, 65536, 0, 458799, 65536, 0, 393263, 65536, 0, 327727, 65536, 0, 262191, 65536, 0, 196655, 65536, 0, 131119, 65536, 0, 65583, 65536, 0, 47, 65536, 0, 48, 65536, 0, 65584, 65536, 0, 131120, 65536, 0, 196656, 65536, 0, 262192, 65536, 0, 327728, 65536, 0, 393264, 65536, 0, 458800, 65536, 0, 524336, 65536, 0, 589872, 65536, 0, 655408, 65536, 0, 720944, 65536, 0, 786480, 65536, 0, 786481, 65536, 0, 720945, 65536, 0, 655409, 65536, 0, 589873, 65536, 0, 524337, 65536, 0, 458801, 65536, 0, 393265, 65536, 0, 327729, 65536, 0, 262193, 65536, 0, 196657, 65536, 0, 131121, 65536, 0, 65585, 65536, 0, 49, 65536, 0, 50, 65536, 0, 65586, 65536, 0, 131122, 65536, 0, 196658, 65536, 0, 262194, 65536, 0, 327730, 65536, 0, 393266, 65536, 0, 458802, 65536, 0, 524338, 65536, 0, 589874, 65536, 0, 655410, 65536, 0, 720946, 65536, 0, 786482, 65536, 0, 786483, 65536, 0, 720947, 65536, 0, 655411, 65536, 0, 589875, 65536, 0, 524339, 65536, 0, 458803, 65536, 0, 393267, 65536, 0, 327731, 65536, 0, 262195, 65536, 0, 196659, 65536, 0, 131123, 65536, 0, 65587, 65536, 0, 51, 65536, 0, -65483, 131072, 0, 53, 131072, 0, 65589, 131072, 0, 131125, 131072, 0, 196661, 131072, 0, 262197, 131072, 0, 327733, 131072, 0, 393269, 131072, 0, 458805, 131072, 0, 524341, 131072, 0, 589877, 131072, 0, 655413, 131072, 0, 720949, 131072, 0, 786485, 131072, 0, 852021, 131072, 0)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wj0ob")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(2636.79, 448.323)
+progress = 1824.8
+loop = false
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+position = Vector2(0.000488281, 2.47955e-05)
+zoom = Vector2(1.73, 1.73)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1365.4, 769.946)
+scale = Vector2(53.9549, 53.9549)
+stream = ExtResource("7_qc2pt")
+autoplay = true
+bus = &"Music"
+
+[node name="no_bullets" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_tgwnk")
+volume_db = -6.0
+
+[node name="shooting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vjgyo")
+volume_db = -6.0
+pitch_scale = 1.07
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dsmj3")
+}
+
+[node name="sound_button" parent="." instance=ExtResource("12_lae7h")]
+layout_mode = 0
+offset_left = 1515.22
+offset_top = 804.058
+offset_right = 1612.22
+offset_bottom = 892.058
+scale = Vector2(0.829129, 0.902908)
+
+[connection signal="mouse_entered" from="Panel/Buttons/Start_Game" to="." method="_on_start_game_mouse_entered"]
+[connection signal="pressed" from="Panel/Buttons/Start_Game" to="." method="_on_start_game_pressed"]
+[connection signal="mouse_entered" from="Panel/Buttons/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="pressed" from="Panel/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="Panel/Buttons/exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="Panel/Buttons/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/Buttons/exit" to="." method="_on_start_game_pressed"]
+[connection signal="mouse_entered" from="Panel/Buttons/Select_level" to="." method="_on_select_level_mouse_entered"]
+[connection signal="pressed" from="Panel/Buttons/Select_level" to="." method="_on_select_level_pressed"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[connection signal="finished" from="shooting" to="." method="_on_shooting_finished"]

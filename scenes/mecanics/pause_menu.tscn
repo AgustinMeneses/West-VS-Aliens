@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgyeu44rnmvlj"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_710uc"]
+[ext_resource type="FontFile" uid="uid://bvxcwrj0c2l6m" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Mini Square.ttf" id="1_k3fm6"]
+[ext_resource type="PackedScene" uid="uid://dinblgl2d1ftl" path="res://scenes/mecanics/sound_button.tscn" id="3_hbblc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mtjyn"]
+font = ExtResource("1_k3fm6")
+font_size = 73
+
+[node name="Pause_menu" type="Control"]
+process_mode = 3
+visible = false
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -217.0
+offset_top = -55.0
+offset_right = 608.0
+offset_bottom = 350.0
+script = ExtResource("1_710uc")
+
+[node name="continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -112.5
+offset_right = 196.0
+offset_bottom = -21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="continue"]
+layout_mode = 0
+offset_right = 392.0
+offset_bottom = 92.0
+text = "RESUME"
+label_settings = SubResource("LabelSettings_mtjyn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sound_button" parent="." instance=ExtResource("3_hbblc")]
+layout_mode = 0
+offset_left = 769.0
+offset_top = 354.0
+offset_right = 866.0
+offset_bottom = 442.0
+scale = Vector2(0.467713, 0.476951)
+
+[node name="Back_to_MENU" type="Button" parent="."]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 191.0
+offset_right = 702.0
+offset_bottom = 283.0
+
+[node name="Label" type="Label" parent="Back_to_MENU"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 548.0
+offset_bottom = 93.0
+text = "Back to menu"
+label_settings = SubResource("LabelSettings_mtjyn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Back_to_MENU" to="." method="_on_back_to_menu_pressed"]

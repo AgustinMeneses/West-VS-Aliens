@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfjq0e1bm1lmm"]
+
+[ext_resource type="Script" path="res://Scripts/des_plants.gd" id="1_xsj8d"]
+[ext_resource type="Texture2D" uid="uid://cxfdlymugi3r4" path="res://assets/Pistola 50 x 50.png" id="2_ib6um"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfkbo"]
+size = Vector2(18.1395, 18.1395)
+
+[node name="des_plants" type="Panel"]
+offset_right = 119.0
+offset_bottom = 119.0
+script = ExtResource("1_xsj8d")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 119.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(64, 51)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(64, 51)
+scale = Vector2(0.86, 0.86)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(-1.14441e-05, -7.62939e-06)
+rotation = -0.497862
+scale = Vector2(2.64738, 2.64738)
+texture = ExtResource("2_ib6um")
+region_enabled = true
+region_rect = Rect2(0, 10.4018, 50.9859, 32.6444)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.96695e-06, 1.37091e-06)
+shape = SubResource("RectangleShape2D_xfkbo")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

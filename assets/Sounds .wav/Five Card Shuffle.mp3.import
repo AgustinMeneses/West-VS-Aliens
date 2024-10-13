@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drwgu7jmhm2in"
+path="res://.godot/imported/Five Card Shuffle.mp3-23fb8c13e525afe26df8de1c02fdf8b2.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds .wav/Five Card Shuffle.mp3"
+dest_files=["res://.godot/imported/Five Card Shuffle.mp3-23fb8c13e525afe26df8de1c02fdf8b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

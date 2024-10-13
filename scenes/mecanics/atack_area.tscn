@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://rekox6wbq7fg"]
+
+[ext_resource type="Script" path="res://Scripts/atack_area.gd" id="1_k1vep"]
+
+[node name="Atack_area" type="Area2D"]
+collision_mask = 4
+script = ExtResource("1_k1vep")

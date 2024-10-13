@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://t4xehu2wygsk"
+path="res://.godot/imported/yt5s.com - Sonido de Robot Apagándose 🔊 - Efecto de Sonido (128 kbps).mp3-1fa5f936eb8725414e1ac8d113b193ce.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds .wav/yt5s.com - Sonido de Robot Apagándose 🔊 - Efecto de Sonido (128 kbps).mp3"
+dest_files=["res://.godot/imported/yt5s.com - Sonido de Robot Apagándose 🔊 - Efecto de Sonido (128 kbps).mp3-1fa5f936eb8725414e1ac8d113b193ce.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

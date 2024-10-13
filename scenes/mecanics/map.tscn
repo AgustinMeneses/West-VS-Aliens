@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7qi82ucyf7px"]
+
+[ext_resource type="Texture2D" uid="uid://dufwbj2ceamlo" path="res://assets/TileSheet Availables.png" id="1_w8n4w"]
+[ext_resource type="Texture2D" uid="uid://cf426aubr4tac" path="res://assets/tile selected.png" id="2_jj0vo"]
+[ext_resource type="Texture2D" uid="uid://dfpe6vkfnyd6w" path="res://assets/tile selected_2.png" id="3_f1lxt"]
+[ext_resource type="Script" path="res://Scripts/Map.gd" id="4_isaq3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bg55d"]
+texture = ExtResource("1_w8n4w")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lsnko"]
+texture = ExtResource("2_jj0vo")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ls65d"]
+texture = ExtResource("3_f1lxt")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yab0k"]
+tile_size = Vector2i(60, 60)
+sources/3 = SubResource("TileSetAtlasSource_lsnko")
+sources/4 = SubResource("TileSetAtlasSource_ls65d")
+sources/1 = SubResource("TileSetAtlasSource_bg55d")
+
+[node name="Map" type="TileMap"]
+tile_set = SubResource("TileSet_yab0k")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 1, 0, 196609, 1, 0, 2, 1, 0, 131074, 1, 0, 65539, 1, 0, 196611, 1, 0, 4, 1, 0, 131076, 1, 0, 65541, 1, 0, 196613, 1, 0, 6, 1, 0, 131078, 1, 0, 65543, 1, 0, 196615, 1, 0, 196610, 65537, 0, 131073, 65537, 0, 65538, 65537, 0, 131075, 65537, 0, 3, 65537, 0, 1, 65537, 0, 65540, 65537, 0, 5, 65537, 0, 7, 65537, 0, 65542, 65537, 0, 131077, 65537, 0, 196612, 65537, 0, 196614, 65537, 0, 131079, 65537, 0, 262146, 1, 0, 262148, 1, 0, 262150, 1, 0, 262145, 65537, 0, 262147, 65537, 0, 262149, 65537, 0, 262151, 65537, 0, 196616, 65537, 0, 65544, 65537, 0, 262152, 1, 0, 131080, 1, 0, 8, 1, 0, 0, 1, 0, 131072, 1, 0, 262144, 1, 0, 65536, 65537, 0, 196608, 65537, 0, 327679, 65537, 0, 196607, 65537, 0, 131071, 1, 0, 65535, 65537, 0, 262143, 1, 0)
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("4_isaq3")

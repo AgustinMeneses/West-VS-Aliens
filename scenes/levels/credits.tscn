@@ -1,0 +1,244 @@
+[gd_scene load_steps=14 format=3 uid="uid://fmopcx610wn8"]
+
+[ext_resource type="Texture2D" uid="uid://dicd0bewu0cyp" path="res://assets/Charhing bar.png" id="1_7ic4r"]
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_s6mq0"]
+[ext_resource type="FontFile" uid="uid://dkow25jy8qwon" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Blocks.ttf" id="2_cyvvv"]
+[ext_resource type="FontFile" uid="uid://btob7oiy34kbu" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Future Narrow.ttf" id="3_so6hw"]
+[ext_resource type="FontFile" uid="uid://bvxcwrj0c2l6m" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Mini Square.ttf" id="4_mqgqi"]
+[ext_resource type="Texture2D" uid="uid://cc7f4e6awx22m" path="res://assets/pngs/Planta outlinened.png" id="5_n8fbb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h0jsp"]
+font = ExtResource("2_cyvvv")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_0rj6b"]
+font = ExtResource("3_so6hw")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhssg"]
+font = ExtResource("4_mqgqi")
+font_size = 60
+
+[sub_resource type="Curve2D" id="Curve2D_gyiqq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 576, 328, 0, 0, 0, 0, 576, 3016)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_k8ahf"]
+resource_name = "Fade_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vvpb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5y7e"]
+_data = {
+"Fade_out": SubResource("Animation_k8ahf"),
+"RESET": SubResource("Animation_vvpb7")
+}
+
+[node name="Credits" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(576.5, 2366)
+scale = Vector2(23.02, 96.4)
+texture = ExtResource("1_7ic4r")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CREDITOS" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 632.0
+offset_right = 1152.0
+offset_bottom = 782.0
+text = "Creditos"
+label_settings = SubResource("LabelSettings_h0jsp")
+horizontal_alignment = 1
+
+[node name="clases" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 784.0
+offset_right = 40.0
+offset_bottom = 824.0
+
+[node name="clases" type="Label" parent="Control/clases"]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 1152.0
+offset_bottom = 138.0
+text = "productor"
+label_settings = SubResource("LabelSettings_0rj6b")
+horizontal_alignment = 1
+
+[node name="clases2" type="Label" parent="Control/clases"]
+layout_mode = 0
+offset_top = 312.0
+offset_right = 1152.0
+offset_bottom = 362.0
+text = "artista 2d"
+label_settings = SubResource("LabelSettings_0rj6b")
+horizontal_alignment = 1
+
+[node name="clases3" type="Label" parent="Control/clases"]
+layout_mode = 0
+offset_top = 544.0
+offset_right = 1152.0
+offset_bottom = 594.0
+text = "Programador"
+label_settings = SubResource("LabelSettings_0rj6b")
+horizontal_alignment = 1
+
+[node name="clases4" type="Label" parent="Control/clases"]
+layout_mode = 0
+offset_top = 816.0
+offset_right = 1152.0
+offset_bottom = 866.0
+text = "Musica"
+label_settings = SubResource("LabelSettings_0rj6b")
+horizontal_alignment = 1
+
+[node name="clases5" type="Label" parent="Control/clases"]
+layout_mode = 0
+offset_top = 1312.0
+offset_right = 1152.0
+offset_bottom = 1362.0
+text = "inspiracion"
+label_settings = SubResource("LabelSettings_0rj6b")
+horizontal_alignment = 1
+
+[node name="Nombres" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 840.0
+offset_right = 40.0
+offset_bottom = 880.0
+
+[node name="nombres" type="Label" parent="Control/Nombres"]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 1152.0
+offset_bottom = 168.0
+text = "- Agustin Noah Meneses"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="nombres2" type="Label" parent="Control/Nombres"]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 1152.0
+offset_bottom = 392.0
+text = "- Agustin Noah Meneses"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="nombres3" type="Label" parent="Control/Nombres"]
+layout_mode = 0
+offset_top = 536.0
+offset_right = 1152.0
+offset_bottom = 632.0
+text = "- Agustin Noah Meneses"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="nombres5" type="Label" parent="Control/Nombres"]
+layout_mode = 0
+offset_top = 808.0
+offset_right = 1152.0
+offset_bottom = 904.0
+text = "- A Fistful of Dollars - Titles"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="nombres4" type="Label" parent="Control/Nombres"]
+layout_mode = 0
+offset_top = 896.0
+offset_right = 1152.0
+offset_bottom = 976.0
+text = "- Five Card Shuffle"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="nombres6" type="Label" parent="Control/Nombres"]
+layout_mode = 0
+offset_top = 1304.0
+offset_right = 1152.0
+offset_bottom = 1379.0
+text = "- Plants vs zombies"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="nombres7" type="Label" parent="Control/Nombres"]
+layout_mode = 0
+offset_top = 1864.0
+offset_right = 1152.0
+offset_bottom = 2095.0
+text = "Gracias especiales
+al grupo entero por  ayudarme en
+este proyecto	"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="nombres8" type="Label" parent="Control/Nombres"]
+offset_top = 992.0
+offset_right = 1152.0
+offset_bottom = 1145.0
+text = "- THE GOOD, THE BAD AND THE UGLY
+Main Theme
+"
+label_settings = SubResource("LabelSettings_hhssg")
+horizontal_alignment = 1
+
+[node name="Plant" type="Sprite2D" parent="Control"]
+position = Vector2(560, 3128)
+scale = Vector2(7.29, 7.29)
+texture = ExtResource("5_n8fbb")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gyiqq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(576, 328)
+rotation = 1.5708
+loop = false
+script = ExtResource("1_s6mq0")
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-16, 7.00353e-07)
+rotation = -1.57358
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r5y7e")
+}

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgobdtreehslb"
+path="res://.godot/imported/Shooting sound.mp3-4a864e7e51b6a030738e205e078b69a8.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds .wav/Shooting sound.mp3"
+dest_files=["res://.godot/imported/Shooting sound.mp3-4a864e7e51b6a030738e205e078b69a8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

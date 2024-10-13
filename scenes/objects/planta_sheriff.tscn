@@ -1,0 +1,652 @@
+[gd_scene load_steps=51 format=3 uid="uid://djsbvfgrwx37j"]
+
+[ext_resource type="Script" path="res://Scripts/Planta_sheriff.gd" id="1_h541r"]
+[ext_resource type="Texture2D" uid="uid://dicd0bewu0cyp" path="res://assets/Charhing bar.png" id="2_6rplt"]
+[ext_resource type="Texture2D" uid="uid://cxfdlymugi3r4" path="res://assets/Pistola 50 x 50.png" id="2_d5glk"]
+[ext_resource type="Texture2D" uid="uid://gdkymkdyd7bv" path="res://assets/humito.png" id="3_0qu7l"]
+[ext_resource type="Texture2D" uid="uid://b2rsw0q1ncbrs" path="res://assets/Planta sheriff.png" id="3_cirsg"]
+[ext_resource type="Texture2D" uid="uid://d345h0f64dqp4" path="res://assets/planta sheriff (start + shooting).png" id="4_kqywl"]
+[ext_resource type="Texture2D" uid="uid://cqmcn3k0tavx4" path="res://assets/planta pistolera (start + shooting).png" id="5_i3vut"]
+[ext_resource type="PackedScene" uid="uid://rekox6wbq7fg" path="res://scenes/mecanics/atack_area.tscn" id="6_vtgtq"]
+[ext_resource type="AudioStream" uid="uid://dgobdtreehslb" path="res://assets/Sounds .wav/Shooting sound.mp3" id="7_vgxd0"]
+
+[sub_resource type="Curve" id="Curve_ydtp6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.854749, 0), 0.307349, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k8471"]
+curve = SubResource("Curve_ydtp6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6msmx"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.175
+spread = 163.834
+initial_velocity_min = 116.9
+initial_velocity_max = 165.45
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_k8471")
+color = Color(0.997587, 0.968756, 0.888482, 1)
+
+[sub_resource type="Gradient" id="Gradient_c52ut"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rk11r"]
+gradient = SubResource("Gradient_c52ut")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_rjny0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.826667, 0.208791), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_81raf"]
+curve = SubResource("Curve_rjny0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_355j5"]
+particle_flag_disable_z = true
+angle_min = -647.2
+angle_max = -48.5
+inherit_velocity_ratio = 0.303
+spread = 45.001
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, -98, 0)
+tangential_accel_max = 15.73
+scale_min = 0.3
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_81raf")
+scale_over_velocity_max = 67.42
+color = Color(0.643137, 0.643137, 0.643137, 1)
+color_ramp = SubResource("GradientTexture1D_rk11r")
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov3dq"]
+atlas = ExtResource("3_cirsg")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hprde"]
+atlas = ExtResource("3_cirsg")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rje1h"]
+atlas = ExtResource("3_cirsg")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q53i2"]
+atlas = ExtResource("3_cirsg")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7hwm"]
+atlas = ExtResource("3_cirsg")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0dsm"]
+atlas = ExtResource("3_cirsg")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjexu"]
+atlas = ExtResource("3_cirsg")
+region = Rect2(300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fbc0"]
+atlas = ExtResource("4_kqywl")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c3iy"]
+atlas = ExtResource("4_kqywl")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibycd"]
+atlas = ExtResource("4_kqywl")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhtrh"]
+atlas = ExtResource("4_kqywl")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1q2p"]
+atlas = ExtResource("4_kqywl")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss0ml"]
+atlas = ExtResource("4_kqywl")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nst04"]
+atlas = ExtResource("5_i3vut")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6yh0"]
+atlas = ExtResource("5_i3vut")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r8w5"]
+atlas = ExtResource("5_i3vut")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gen3"]
+atlas = ExtResource("5_i3vut")
+region = Rect2(150, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw8ok"]
+atlas = ExtResource("5_i3vut")
+region = Rect2(200, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r17m5"]
+atlas = ExtResource("5_i3vut")
+region = Rect2(250, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ud0oi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov3dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hprde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rje1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q53i2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7hwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0dsm")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_sjexu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fbc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c3iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhtrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1q2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss0ml")
+}],
+"loop": false,
+"name": &"shooting",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nst04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6yh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r8w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gen3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw8ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r17m5")
+}],
+"loop": true,
+"name": &"start",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jru1f"]
+atlas = ExtResource("2_d5glk")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay6mm"]
+atlas = ExtResource("2_d5glk")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbke1"]
+atlas = ExtResource("2_d5glk")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d0pl"]
+atlas = ExtResource("2_d5glk")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxsdn"]
+atlas = ExtResource("2_d5glk")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqhg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jru1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay6mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbke1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d0pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxsdn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4fpx"]
+size = Vector2(625.006, 20)
+
+[sub_resource type="Animation" id="Animation_6kpvs"]
+resource_name = "IDLE"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.100642, 0.2, 0.3),
+"transitions": PackedFloat32Array(19.6982, 16.5642, 11.7126, 11.7127),
+"update": 0,
+"values": [0.0, 0.141372, 0.235619, 0.158825]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../planta:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../planta:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../planta:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Pistola 2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(19.6983, 16.5642, 11.7127, 11.7127),
+"update": 0,
+"values": [5.1079e-06, 0.141372, 0.235619, 0.158825]
+}
+
+[sub_resource type="Animation" id="Animation_g1yv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../planta:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../planta:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../planta:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Pistola 2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.1079e-06]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Pistola 2:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Pistola 2:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../shooting:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tv05w"]
+resource_name = "shooting"
+length = 0.6
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker_1/GPUParticles2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.08),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../planta:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.23, 0.27, 0.34, 0.43),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(3.4822, 0.812251, 1.51572),
+"update": 0,
+"values": [0.000102158, -0.546288, 0.000102126]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../planta:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"shooting"]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Pistola 2/Marker_2/GPUParticles2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.33),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Pistola 2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.36, 0.55),
+"transitions": PackedFloat32Array(3.03143, 0.840896, 1.51572),
+"update": 0,
+"values": [5.1079e-06, -0.546288, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Pistola 2:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Pistola 2:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.39, 0.43, 0.46, 0.49, 0.53),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../shooting:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.05, 0.3, 0.31, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_h3l2x"]
+resource_name = "start"
+length = 1.00001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7gixn"]
+_data = {
+"IDLE": SubResource("Animation_6kpvs"),
+"RESET": SubResource("Animation_g1yv3"),
+"shooting": SubResource("Animation_tv05w"),
+"start": SubResource("Animation_h3l2x")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ask5g"]
+radius = 29.0
+
+[node name="Planta_sheriff" type="Area2D"]
+script = ExtResource("1_h541r")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 24)
+emitting = false
+amount = 11
+process_material = SubResource("ParticleProcessMaterial_6msmx")
+texture = ExtResource("2_6rplt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+
+[node name="sprite" type="Node2D" parent="."]
+
+[node name="pistola 1" type="Sprite2D" parent="sprite"]
+position = Vector2(18.4464, 3.25524)
+scale = Vector2(0.795515, 0.795515)
+texture = ExtResource("2_d5glk")
+region_enabled = true
+region_rect = Rect2(-3.23762, -7.0171, 53.7196, 59.5129)
+
+[node name="Marker_1" type="Marker2D" parent="sprite/pistola 1"]
+position = Vector2(27.6843, -2.267)
+rotation = -4.60967e-05
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="sprite/pistola 1/Marker_1"]
+position = Vector2(1.90735e-06, 4.76837e-07)
+rotation = 4.60967e-05
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_355j5")
+texture = ExtResource("3_0qu7l")
+one_shot = true
+explosiveness = 0.68
+
+[node name="planta" type="AnimatedSprite2D" parent="sprite"]
+position = Vector2(1.00001, 2)
+scale = Vector2(1.33577, 1.33577)
+sprite_frames = SubResource("SpriteFrames_ud0oi")
+animation = &"idle"
+autoplay = "idle"
+frame = 2
+
+[node name="Pistola 2" type="AnimatedSprite2D" parent="sprite"]
+position = Vector2(19, 21)
+scale = Vector2(0.795515, 0.795515)
+sprite_frames = SubResource("SpriteFrames_rqhg3")
+
+[node name="Marker_2" type="Marker2D" parent="sprite/Pistola 2"]
+position = Vector2(27.6549, -2.30034)
+rotation = -4.60967e-05
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="sprite/Pistola 2/Marker_2"]
+position = Vector2(1.90735e-06, 4.76837e-07)
+rotation = 4.60967e-05
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_355j5")
+texture = ExtResource("3_0qu7l")
+one_shot = true
+explosiveness = 0.68
+
+[node name="Atack_area" parent="." instance=ExtResource("6_vtgtq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Atack_area"]
+position = Vector2(329.864, 0)
+shape = SubResource("RectangleShape2D_s4fpx")
+debug_color = Color(0.769408, 0.401823, 0.515035, 0.42)
+
+[node name="Shoot_Timer" type="Timer" parent="."]
+wait_time = 1.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sprite/pistola 1")
+libraries = {
+"": SubResource("AnimationLibrary_7gixn")
+}
+autoplay = "IDLE"
+speed_scale = 0.673
+
+[node name="anim_damage" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="shooting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vgxd0")
+bus = &"bullets"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_ask5g")
+
+[connection signal="timeout" from="Shoot_Timer" to="." method="_on_shoot_timer_timeout"]

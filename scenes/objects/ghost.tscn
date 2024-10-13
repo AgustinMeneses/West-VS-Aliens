@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5m0uc6aohsba"]
+
+[ext_resource type="Texture2D" uid="uid://exqgvm775cfh" path="res://assets/Planta pistolera 50 x 50.png" id="1_0mcpl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_roaih"]
+radius = 25.0
+
+[node name="ghost" type="Area2D"]
+collision_layer = 16
+collision_mask = 128
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.905826, 0.591671, 0.668685, 0.45098)
+scale = Vector2(1.12648, 1.12648)
+texture = ExtResource("1_0mcpl")
+region_enabled = true
+region_rect = Rect2(0, 0, 48.5904, 53.4341)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_roaih")

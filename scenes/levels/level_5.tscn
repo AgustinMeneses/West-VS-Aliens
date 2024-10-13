@@ -1,0 +1,791 @@
+[gd_scene load_steps=49 format=3 uid="uid://cj42catrcwfy"]
+
+[ext_resource type="Script" path="res://Scripts/level_5.gd" id="1_0ws45"]
+[ext_resource type="PackedScene" uid="uid://c7qi82ucyf7px" path="res://scenes/mecanics/map.tscn" id="2_cvdyx"]
+[ext_resource type="PackedScene" uid="uid://bx8ipuax6vm6d" path="res://scenes/mecanics/SpawnAliens.tscn" id="3_33cum"]
+[ext_resource type="Script" path="res://UI.gd" id="4_2qxjr"]
+[ext_resource type="PackedScene" uid="uid://6aablavcmfuw" path="res://scenes/mecanics/plant_selector.tscn" id="5_p8pns"]
+[ext_resource type="PackedScene" uid="uid://b5m0uc6aohsba" path="res://scenes/objects/ghost.tscn" id="6_s35yr"]
+[ext_resource type="PackedScene" uid="uid://b63m01jpnmedq" path="res://scenes/objects/planta_rodadora.tscn" id="7_xk4sw"]
+[ext_resource type="Texture2D" uid="uid://dp3bxjk7v87sw" path="res://assets/pngs/Planta pistolera.png" id="8_i6x2v"]
+[ext_resource type="PackedScene" uid="uid://ctjf5brebghda" path="res://scenes/objects/ghost_(nepal).tscn" id="9_c0vjm"]
+[ext_resource type="PackedScene" uid="uid://dfwwuoayeurdi" path="res://scenes/objects/nepal.tscn" id="10_pfbmb"]
+[ext_resource type="Texture2D" uid="uid://bwvgtcljnkmah" path="res://assets/pngs/Nepal 64x64 (png).png" id="11_dg8kh"]
+[ext_resource type="PackedScene" uid="uid://dwy71xuy4dddj" path="res://scenes/objects/ghost_(sheriff).tscn" id="12_8fir8"]
+[ext_resource type="PackedScene" uid="uid://djsbvfgrwx37j" path="res://scenes/objects/planta_sheriff.tscn" id="13_qrfnj"]
+[ext_resource type="Texture2D" uid="uid://b58j4pxpf8p2h" path="res://assets/pngs/Planta sheriff(png).png" id="14_4i143"]
+[ext_resource type="PackedScene" uid="uid://bfjq0e1bm1lmm" path="res://scenes/mecanics/des_plants.tscn" id="15_j3ycv"]
+[ext_resource type="Texture2D" uid="uid://dw3d51s1wphqi" path="res://assets/Moneda.png" id="16_1qgqi"]
+[ext_resource type="AudioStream" uid="uid://bb3amqp83kuja" path="res://assets/Sounds .wav/Out of money.wav" id="17_am5q5"]
+[ext_resource type="Texture2D" uid="uid://bmlu5avy1hjqk" path="res://assets/barra de progreso (textura).png" id="18_sqs7i"]
+[ext_resource type="Texture2D" uid="uid://4iydfi7j0voh" path="res://assets/barra de progreso.png" id="19_684al"]
+[ext_resource type="PackedScene" uid="uid://buvhnx7xyiekv" path="res://scenes/mecanics/killzone.tscn" id="21_j1w32"]
+[ext_resource type="PackedScene" uid="uid://dq18515xkiy66" path="res://scenes/mecanics/bank.tscn" id="22_v1tx2"]
+[ext_resource type="AudioStream" uid="uid://b25r6nxp6uwdn" path="res://assets/Sounds .wav/yt5s.com - Five Card Shuffle (128 kbps).mp3" id="23_ccmeb"]
+[ext_resource type="PackedScene" uid="uid://66773rbh54lg" path="res://scenes/mecanics/new_plant.tscn" id="24_3xwc3"]
+[ext_resource type="Texture2D" uid="uid://dicd0bewu0cyp" path="res://assets/Charhing bar.png" id="26_nyegx"]
+[ext_resource type="Texture2D" uid="uid://b1reglt4gd82i" path="res://assets/start.png" id="27_q3csa"]
+[ext_resource type="AudioStream" uid="uid://qnjdcjvcvmhx" path="res://assets/Sounds .wav/new-kick-01-238978.mp3" id="28_csxgm"]
+[ext_resource type="AudioStream" uid="uid://cg6le55lsi0hr" path="res://assets/Sounds .wav/yt5s.com - Musica🔊 de duelo a muerte en el Viejo Oeste🤠.--🔊Music of dueling to the death in🤠 the Old West. (128 kbps).mp3" id="29_cjvx5"]
+[ext_resource type="FontFile" uid="uid://btob7oiy34kbu" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Future Narrow.ttf" id="30_4c487"]
+[ext_resource type="AudioStream" uid="uid://bilh4vq5tmi6a" path="res://assets/Sounds .wav/POWER UP.mp3" id="30_be6iu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwe31"]
+bg_color = Color(0.870588, 0.639216, 0.415686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucw4k"]
+bg_color = Color(0.943891, 0.809435, 0.661974, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_34fb6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nvlgq"]
+line_spacing = 1.0
+font = SubResource("SystemFont_34fb6")
+font_size = 60
+font_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
+[sub_resource type="Animation" id="Animation_dsq3x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("money_Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0923971, 0.0923971, 0.0923971, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.0]
+}
+
+[sub_resource type="Animation" id="Animation_obq07"]
+resource_name = "out of money"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("money_Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 0.466516, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0923971, 0.0923971, 0.0923971, 1), Color(0.812499, 0.12489, 0.290215, 1), Color(0, 0, 0, 1), Color(0.811765, 0.12549, 0.290196, 1), Color(0, 0, 0, 1), Color(0.811765, 0.12549, 0.290196, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.965938),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r82yc"]
+_data = {
+"RESET": SubResource("Animation_dsq3x"),
+"out of money": SubResource("Animation_obq07")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uv7xi"]
+
+[sub_resource type="Animation" id="Animation_btkol"]
+resource_name = "Next_plant"
+length = 3.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("New_plant:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(195, -103), Vector2(195, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("New_plant:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 2),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [Vector2(1.15944, 1.15944), Vector2(2.43426, 2.43426)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5ixjf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("New_plant:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(193, -124)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("New_plant:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.15944, 1.15944)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/AnimatedSprite2D:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/AnimatedSprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/AudioStreamPlayer2D:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/AudioStreamPlayer2D:pitch_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.74]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer/AnimatedSprite2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/Label:label_settings:font_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimationPlayer/Label:label_settings:outline_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimationPlayer/PowerUP:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimationPlayer/Label:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wxl5d"]
+resource_name = "dmg_buffed"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1.03527, 1, 1, 1, 1, 1, 3.27079e-05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Label:label_settings:outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1.03526, 1, 1, 1, 0.933034, 1, 0.00296038, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/PowerUP:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fr72m"]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/AnimatedSprite2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/AudioStreamPlayer2D:pitch_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.74, 0.96]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/Music2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/AnimatedSprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5o5kj"]
+_data = {
+"Next_plant": SubResource("Animation_btkol"),
+"RESET": SubResource("Animation_5ixjf"),
+"dmg_buffed": SubResource("Animation_wxl5d"),
+"start": SubResource("Animation_fr72m")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kq41"]
+atlas = ExtResource("27_q3csa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5v43"]
+atlas = ExtResource("27_q3csa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byns5"]
+atlas = ExtResource("27_q3csa")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssasd"]
+atlas = ExtResource("27_q3csa")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxk61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kq41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5v43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byns5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssasd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gqwrf"]
+font = ExtResource("30_4c487")
+font_size = 100
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Level_5" type="Node2D"]
+script = ExtResource("1_0ws45")
+kills_needed = Array[int]([9, 31, 44])
+wait_times = Array[float]([4.0, 3.0, 1.5])
+wave_number = Array[int]([14, 18])
+name_level = "Level_5"
+next_level = "res://scenes/levels/credits.tscn"
+
+[node name="Map" parent="." instance=ExtResource("2_cvdyx")]
+
+[node name="SpawnAliens" parent="." instance=ExtResource("3_33cum")]
+enemy_dmg_multiplier = 3.0
+enemy_speed_multiplier = 2.5
+y_placement = Array[int]([0, 1, 2, 3, 4])
+
+[node name="plants" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_left = -0.16
+anchor_top = -0.086
+anchor_right = 0.556
+anchor_bottom = 0.556
+offset_left = -220.0
+offset_top = -56.0
+offset_right = -220.0
+offset_bottom = -56.0
+script = ExtResource("4_2qxjr")
+
+[node name="Plant_selector" parent="UI" instance=ExtResource("5_p8pns")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 145.0
+offset_top = 5.0
+offset_right = 221.0
+offset_bottom = 57.0
+scale = Vector2(0.941269, 0.941269)
+ghost_tipe = ExtResource("6_s35yr")
+cooldown = 10.0
+price = -75
+label_price = "75"
+another_plant_scene = ExtResource("7_xk4sw")
+sprite = ExtResource("8_i6x2v")
+
+[node name="Plant_selector2" parent="UI" instance=ExtResource("5_p8pns")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 227.0
+offset_top = 5.0
+offset_right = 303.0
+offset_bottom = 57.0
+scale = Vector2(0.941269, 0.941269)
+ghost_tipe = ExtResource("9_c0vjm")
+cooldown = 30.0
+price = -50
+label_price = "50"
+another_plant_scene = ExtResource("10_pfbmb")
+sprite = ExtResource("11_dg8kh")
+
+[node name="Plant_selector3" parent="UI" instance=ExtResource("5_p8pns")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 309.0
+offset_top = 5.0
+offset_right = 385.0
+offset_bottom = 57.0
+scale = Vector2(0.941269, 0.941269)
+ghost_tipe = ExtResource("12_8fir8")
+cooldown = 15.0
+price = -200
+label_price = "200"
+another_plant_scene = ExtResource("13_qrfnj")
+sprite = ExtResource("14_4i143")
+
+[node name="des_plants" parent="UI" instance=ExtResource("15_j3ycv")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 24.0
+offset_top = 328.0
+offset_right = 142.0
+offset_bottom = 456.0
+scale = Vector2(0.56065, 0.56065)
+
+[node name="Money" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 4.0
+offset_right = 114.0
+offset_bottom = 57.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nwe31")
+
+[node name="Panel" type="Panel" parent="UI/Money"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 41.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ucw4k")
+
+[node name="money_Label" type="Label" parent="UI/Money"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.393
+anchor_top = 0.194
+anchor_right = 0.393
+anchor_bottom = 0.194
+offset_left = 15.451
+offset_top = 8.166
+offset_right = 177.48
+offset_bottom = 91.166
+scale = Vector2(0.228374, 0.21412)
+text = "0 $"
+label_settings = SubResource("LabelSettings_nvlgq")
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Money"]
+position = Vector2(22, 27)
+scale = Vector2(0.680947, 0.680947)
+texture = ExtResource("16_1qgqi")
+region_enabled = true
+region_rect = Rect2(0, 0, 65, 67)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI/Money"]
+stream = ExtResource("17_am5q5")
+volume_db = -6.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Money"]
+libraries = {
+"": SubResource("AnimationLibrary_r82yc")
+}
+
+[node name="progress bar" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 8.0
+offset_right = 808.0
+offset_bottom = 40.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/progress bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -4.0
+offset_right = -129.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.35577, 2.07525)
+max_value = 52.0
+texture_progress = ExtResource("18_sqs7i")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/progress bar"]
+position = Vector2(112.5, 17)
+scale = Vector2(2.43, 2.14651)
+texture = ExtResource("19_684al")
+region_enabled = true
+region_rect = Rect2(0, 0, 100.322, 20.9445)
+
+[node name="midle" type="Sprite2D" parent="UI/progress bar"]
+position = Vector2(131, 18)
+scale = Vector2(2.33789, 2.22368)
+texture = ExtResource("19_684al")
+region_enabled = true
+region_rect = Rect2(140.971, 1.97219, 9.32401, 17.567)
+
+[node name="midle2" type="Sprite2D" parent="UI/progress bar"]
+position = Vector2(185, 18)
+scale = Vector2(2.33789, 2.22368)
+texture = ExtResource("19_684al")
+region_enabled = true
+region_rect = Rect2(140.971, 1.97219, 9.32401, 17.567)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(195, 150)
+zoom = Vector2(1.4, 1.55)
+
+[node name="Killzone" parent="." instance=ExtResource("21_j1w32")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-164, 170)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_uv7xi")
+
+[node name="Banco" type="Node2D" parent="."]
+position = Vector2(-21, 0)
+
+[node name="Bank" parent="Banco" instance=ExtResource("22_v1tx2")]
+position = Vector2(-121, 109)
+scale = Vector2(1.14426, 1.07235)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("23_ccmeb")
+attenuation = 0.574349
+bus = &"Music"
+
+[node name="New_plant" parent="." instance=ExtResource("24_3xwc3")]
+position = Vector2(193, -124)
+scale = Vector2(1.15944, 1.15944)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+top_level = true
+position = Vector2(161, 206)
+scale = Vector2(19, 19)
+texture = ExtResource("26_nyegx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_5o5kj")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationPlayer"]
+visible = false
+position = Vector2(194, 150)
+scale = Vector2(6.77761, 6.77761)
+sprite_frames = SubResource("SpriteFrames_fxk61")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+process_mode = 3
+stream = ExtResource("28_csxgm")
+volume_db = -2.81
+pitch_scale = 0.74
+
+[node name="Music2" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+process_mode = 3
+stream = ExtResource("29_cjvx5")
+autoplay = true
+bus = &"Music"
+
+[node name="Label" type="Label" parent="AnimationPlayer"]
+offset_left = -189.0
+offset_top = 15.0
+offset_right = 579.0
+offset_bottom = 265.0
+text = "VELOCIDAD DE
+ENEMIGOS +2"
+label_settings = SubResource("LabelSettings_gqwrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerUP" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+stream = ExtResource("30_be6iu")
+
+[editable path="Map"]
+[editable path="SpawnAliens"]

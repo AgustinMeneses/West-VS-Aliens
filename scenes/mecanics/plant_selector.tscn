@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://6aablavcmfuw"]
+
+[ext_resource type="Script" path="res://Scripts/plant_selector.gd" id="1_8yvyh"]
+[ext_resource type="Texture2D" uid="uid://dicd0bewu0cyp" path="res://assets/Charhing bar.png" id="2_1i44d"]
+[ext_resource type="AudioStream" uid="uid://djgevge4pm5mu" path="res://assets/Sounds .wav/PlantPlanted.wav" id="3_o3qe1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqpsj"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lnyr4"]
+font_size = 54
+font_color = Color(0.894118, 0.839216, 0.768627, 1)
+
+[node name="Plant_selector" type="Panel"]
+clip_contents = true
+anchors_preset = -1
+anchor_right = 0.723
+anchor_bottom = 0.88
+offset_right = -756.896
+offset_bottom = -518.24
+scale = Vector2(10.9658, 10.9658)
+script = ExtResource("1_8yvyh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 19.7778
+offset_top = 3.32441
+offset_right = 82.7778
+offset_bottom = 63.3244
+expand_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.72549)
+self_modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 0
+offset_right = 76.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sqpsj")
+
+[node name="p_bar" type="TextureProgressBar" parent="Panel"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(1.51862, 1.0422)
+step = 0.01
+fill_mode = 4
+texture_progress = ExtResource("2_1i44d")
+tint_progress = Color(1, 1, 1, 0.470588)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 53.0
+scale = Vector2(0.303618, 0.265782)
+text = "$"
+label_settings = SubResource("LabelSettings_lnyr4")
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o3qe1")
+volume_db = -0.386
+mix_target = 1
+bus = &"plant_placed"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
